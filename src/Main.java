@@ -1,41 +1,41 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
 
-
-
         System.out.println("Hello and welcome!");
 
-        System.out.printf("Initializing banking system..");
+        System.out.println("Initializing banking system...");
 
-        int totalNumberOfSimulaion = 10;
+        int totalNumberOfSimulation = 10;
         OperationsQueue operationsQueue = new OperationsQueue();
         Bank bank = new Bank("123", operationsQueue);
 
-        System.out.println("Initializing simulation....");
+        System.out.println("Initializing simulation...");
         Thread simulationThread = new Thread(() -> {
-            operationsQueue.addSimulation(totalNumberOfSimulaion);
+             operationsQueue.addSimulation(totalNumberOfSimulation);
         });
         simulationThread.start();
+        System.out.println("Simulation initialized.");
 
-
-        System.out.printf("Initializing deposit systen....");
+        System.out.println("Initializing deposit system...");
         Thread depositThread = new Thread(() -> {
             bank.deposit();
         });
         depositThread.start();
-        System.out.println("coompleted");
+        System.out.println("Deposit system initialized.");
 
-        System.out.printf("Initializing withdraw systen....");
+        System.out.println("Initializing withdraw system...");
         Thread withdrawThread = new Thread(() -> {
             bank.withdraw();
         });
         withdrawThread.start();
-        System.out.println("coompleted");
+        System.out.println("Withdraw system initialized.");
 
-
-        System.out.println("coompleted");
-
+        try {
+            simulationThread.join();
+            depositThread.join();
+            withdrawThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
