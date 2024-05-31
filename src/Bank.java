@@ -11,6 +11,9 @@ public class Bank {
         this.operationsQueue = operationsQueue;
     }
 
+
+
+    
     // A deposit function that will run in parallel on a separate thread. It will be a loop where in each iteration, it read the amount from the operationQueue and deposit the amount.
     public void deposit() {
         //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
