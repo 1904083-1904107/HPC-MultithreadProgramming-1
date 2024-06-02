@@ -16,6 +16,7 @@ class Bank {
         while (true) {
             int amount = operationsQueue.getNextItem();
             if (amount == -9999) {
+                operationsQueue.add(-9999);
                 break;
             }
             if (amount > 0) {
@@ -37,6 +38,7 @@ class Bank {
         while (true) {
             int amount = operationsQueue.getNextItem();
             if (amount == -9999) {
+                operationsQueue.add(-9999);
                 break;
             }
             if (balance + amount < 0) {
